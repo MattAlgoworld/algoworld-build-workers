@@ -65,4 +65,4 @@ jobs:
         if: env.HAS_COMMITS != false
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: testnet
+          branch: main
