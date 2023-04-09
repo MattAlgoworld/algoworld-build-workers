@@ -14,7 +14,7 @@ jobs:
     name: Run building feature worker
     runs-on: ubuntu-latest
     env:
-      MANAGER_PASSPHRASE: ${{ secrets.BUILD_MANAGER_PASSPHRASE }}
+      BUILD_MANAGER_PASSPHRASE: ${{ secrets.BUILD_MANAGER_PASSPHRASE }}
       LEDGER_TYPE: TestNet
 
     steps:
