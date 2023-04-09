@@ -85,7 +85,7 @@ def update_arc_tags(
 
     builder_attribute = ARC69Attribute(trait_type="Builder", value=sender_address)
 
-    cost_attribute = ARC69Attribute(trait_type="Cost", value=deposit)
+    cost_attribute = ARC69Attribute(trait_type="Cost", value=str(deposit))
 
     pretty_print(f"New object {object_id} for {asset_index}")
     pretty_print(
@@ -233,22 +233,21 @@ def process_build_txns():
                 )
 
             else:
+                print(processed_deposit_txns["transactions"][0])
                 tx = (
-                    (
                         (
                             processed_deposit_txns["transactions"][0]["id"],
                             processed_deposit_txns["transactions"][0],
-                        ),
-                    )
-                    if transaction_already_processed
-                    else extract_update_arc_tags(
-                        account=manager_account,
-                        sender_address=axfer_txn["sender"],
-                        asset_index=axfer_txn_note.asset_id,
-                        object_index=axfer_txn_note.object_id,
-                        deposit=axfer_txn_note.deposit,
-                        build_deposit_txid=axfer_txn["id"],
-                    )
+                        )
+                        if transaction_already_processed
+                        else extract_update_arc_tags(
+                            account=manager_account,
+                            sender_address=axfer_txn["sender"],
+                            asset_index=axfer_txn_note.asset_id,
+                            object_index=axfer_txn_note.object_id,
+                            deposit=axfer_txn_note.deposit,
+                            build_deposit_txid=axfer_txn["id"],
+                        )
                 )
                 confirmed_round = (
                     tx[1]["confirmed-round"] if "confirmed-round" in tx[1] else None
