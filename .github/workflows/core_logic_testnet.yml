@@ -35,19 +35,23 @@ jobs:
       - name: Install python dependencies
         run: poetry install
 
-      - name: Fetch new cities
+      - name: Fetch new build tx
         run: |
           PYTHONPATH="." poetry run python src/build/process_build.py
 
-      - name: Process AWT Deposits
+      - name: Fetch tiles config tx
         run: |
           PYTHONPATH="." poetry run python src/build/fetch_tiles.py
 
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      
       - name: Commit files
         id: commit_files
         run: |
           git commit -m "chore: refreshed building data 🤖" -a
-
 
       - name: Push changes
         uses: ad-m/github-push-action@master
