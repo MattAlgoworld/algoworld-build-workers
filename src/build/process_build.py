@@ -233,7 +233,6 @@ def process_build_txns():
                 )
 
             else:
-                print(processed_deposit_txns["transactions"][0])
                 tx = (
                         (
                             processed_deposit_txns["transactions"][0]["id"],
