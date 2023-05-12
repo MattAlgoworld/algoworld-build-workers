@@ -71,7 +71,7 @@ def update_arc_tags(
     account: Wallet,
     sender_address: str,
     asset_index: int,
-    object_id: int,
+    object_id: str,
     deposit: int,
     cur_arc_note: ARC69Record,
     deposit_txn: str = None,

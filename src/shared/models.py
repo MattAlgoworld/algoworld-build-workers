@@ -77,7 +77,7 @@ class AlgoWorldAsset:
 @dataclass
 class BuildAsset:
     index: int
-    object: int
+    object: str
     builder: str
     owner: str
     cost: int
